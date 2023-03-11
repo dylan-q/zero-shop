@@ -2,6 +2,8 @@ package handler
 
 import (
 	"context"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"gorm.io/gorm"
 	"mxshop_srvs/user_srv/global"
 	"mxshop_srvs/user_srv/model"
@@ -56,4 +58,42 @@ func (u *UserServer) GetUser(ctx context.Context, info *proto.PageInfo) (*proto.
 		rsp.Data = append(rsp.Data, &userInfoRsp)
 	}
 	return rsp, nil
+}
+
+func (u *UserServer) GetUserByMobile(ctx context.Context, req *proto.MobileRequest) (*proto.UserInfoResponse, error) {
+	var user model.User
+	result := global.DB.Where(&model.User{Mobile: req.Mobile}).First(&user)
+
+	if result.RowsAffected == 0 {
+		return nil, status.Errorf(codes.NotFound, "用户不存在")
+	}
+	if result.Error != nil {
+		return nil, result.Error
+	}
+	userInfo := ModelToResponse(user)
+	return &userInfo, nil
+}
+
+func (u *UserServer) GetUserById(ctx context.Context, req *proto.IdRequest) (*proto.UserInfoResponse, error) {
+	var user model.User
+	result := global.DB.First(&user, req.Id)
+
+	if result.RowsAffected == 0 {
+		return nil, status.Errorf(codes.NotFound, "用户不存在")
+	}
+	if result.Error != nil {
+		return nil, result.Error
+	}
+	userInfo := ModelToResponse(user)
+	return &userInfo, nil
+}
+
+func (u *UserServer) CreateUser(ctx context.Context, info *proto.CreateUserInfo) (*proto.UserInfoResponse, error) {
+	var user model.User
+	result := global.DB.Where(&model.User{Mobile: info.Mobile}).First(&user)
+	if result.RowsAffected == 1 {
+		return nil, status.Errorf(codes.AlreadyExists, "用户已存在")
+	}
+	user.Mobile = info.Mobile
+	user.NickName = info.NickName
 }

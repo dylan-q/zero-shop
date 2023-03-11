@@ -53,5 +53,5 @@ message IdRequest {
    int32 id = 1;
 }
 message MobileRequest {
-   int32 mobile = 1;
+   string mobile = 1;
 }
