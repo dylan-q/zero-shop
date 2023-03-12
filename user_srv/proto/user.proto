@@ -33,7 +33,7 @@ message UpdateUserInfo {
    int32 id = 1;
    string nickName = 2;
    string  gender = 3;
-   string birthday = 4;
+   int64 birthday = 4;
 }
 message UserInfoResponse {
    uint32 id = 1;

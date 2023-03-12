@@ -14,7 +14,7 @@ var (
 	DB *gorm.DB
 )
 
-func inti() {
+func init() {
 	dsn := "root:root@tcp(127.0.0.1:3306)/shop_user_srv?charset=utf8mb4&parseTime=True&loc=Local"
 	newLogger := logger.New(
 		log.New(os.Stdout, "\r\n", log.LstdFlags),
