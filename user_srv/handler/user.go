@@ -130,7 +130,11 @@ func (u *UserServer) UpdateUser(ctx context.Context, info *proto.UpdateUserInfo)
 }
 
 func (u *UserServer) CheckPassword(ctx context.Context, info *proto.CheckPasswordInfo) (*proto.CheckResponse, error) {
+	pass := false
+	if info.PassWord == info.EncryptedPassword {
+		pass = true
+	}
 	return &proto.CheckResponse{
-		Success: true,
+		Success: pass,
 	}, nil
 }
