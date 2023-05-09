@@ -2,6 +2,7 @@ package handler
 
 import (
 	"context"
+	"fmt"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/emptypb"
@@ -47,7 +48,7 @@ func Paginate(page, pageSize int) func(db *gorm.DB) *gorm.DB {
 }
 func (u *UserServer) GetUserList(ctx context.Context, info *proto.PageInfo) (*proto.UserListResponse, error) {
 	var users []model.User
-
+	fmt.Println("用户列表")
 	result := global.DB.Find(&users)
 	if result.Error != nil {
 		return nil, result.Error

@@ -3,28 +3,40 @@ package main
 import (
 	"flag"
 	"fmt"
+	uuid "github.com/satori/go.uuid"
+	"go.uber.org/zap"
 	"mxshop_srvs/user_srv/global"
+	"mxshop_srvs/user_srv/utils"
 	"net"
-
-	"mxshop_srvs/user_srv/handler"
-	"mxshop_srvs/user_srv/initialize"
-	"mxshop_srvs/user_srv/proto"
+	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/hashicorp/consul/api"
-	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
+	"mxshop_srvs/user_srv/handler"
+	"mxshop_srvs/user_srv/initialize"
+	"mxshop_srvs/user_srv/proto"
 )
 
 func main() {
-	ip := flag.String("ip", "192.168.0.111", "ip地址")
-	port := flag.Int("port", 50051, "端口号")
+
+	ip := flag.String("ip", "", "ip地址")
+	port := flag.Int("port", 0, "端口号")
 	initialize.InitLogger()
 	initialize.InitConfig()
 	initialize.InitDB()
 
 	flag.Parse()
+
+	if *port == 0 {
+		*port, _ = utils.GetFreePort()
+	}
+	if *ip == "" {
+		*ip = utils.GetIP()
+	}
 	zap.S().Info("IP: ", *ip)
 	zap.S().Info("PORT: ", *port)
 	server := grpc.NewServer()
@@ -45,7 +57,7 @@ func main() {
 	}
 	//生成对应的检查对象
 	check := &api.AgentServiceCheck{
-		GRPC:                           "192.168.0.111:50051", //监听的服务地址
+		GRPC:                           fmt.Sprintf("%s:%d", *ip, *port), //监听的服务地址
 		Timeout:                        "5s",
 		Interval:                       "5s",
 		DeregisterCriticalServiceAfter: "10s",
@@ -54,10 +66,11 @@ func main() {
 	//生成注册对象
 	registration := new(api.AgentServiceRegistration)
 	registration.Name = global.ServerConfig.Name
-	registration.ID = global.ServerConfig.Name
+	serviceId := fmt.Sprintf("%s", uuid.NewV4())
+	registration.ID = serviceId
 	registration.Port = *port
 	registration.Tags = []string{"abc", "def"}
-	registration.Address = "127.0.0.1"
+	registration.Address = *ip
 	registration.Check = check
 
 	err = client.Agent().ServiceRegister(registration)
@@ -66,8 +79,19 @@ func main() {
 		panic(err)
 	}
 
-	err = server.Serve(lis)
-	if err != nil {
-		panic(err)
+	go func() {
+		err = server.Serve(lis)
+		if err != nil {
+			panic(err)
+		}
+	}()
+
+	//接受终止信号
+	quit := make(chan os.Signal)
+	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
+	<-quit
+	if err = client.Agent().ServiceDeregister(serviceId); err != nil {
+		zap.S().Info("注销失败")
 	}
+	zap.S().Info("注销成功")
 }
