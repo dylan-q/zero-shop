@@ -1,10 +1,8 @@
-protoc -I . goods.proto --go_out=plugins=grpc:.
 
-protoc --go_out=. *.proto
-
+protoc --go_out=. --go-grpc_out=. goods.proto
 protoc -I . goods.proto --go-grpc_out=:.
 
-protoc --go_out=./tst --go_opt=paths=source_relative --go-grpc_out=./tst --go-grpc_opt=paths=source_relative goods.proto
+
 
 
 docker run -d -p 8500:8500 -p 8300:8300 -p 8301:8301 -p 8302:8302 -p 8600:8600/udp consul consul agent -dev -client=0.0.0.0

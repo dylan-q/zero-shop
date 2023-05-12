@@ -2,14 +2,15 @@ package initialize
 
 import (
 	"fmt"
+	"log"
+	"mxshop_srvs/goods_srv/global"
+	"os"
+	"time"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
-	"log"
-	"mxshop_srvs/user_srv/global"
-	"os"
-	"time"
 )
 
 func InitDB() {

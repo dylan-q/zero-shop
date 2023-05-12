@@ -1,0 +1,47 @@
+2023-05-09T22:21:51.180+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-09T22:22:03.937+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T10:34:55.957+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T10:34:58.001+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-srv.json","group":"dev","tenant":"08da6372-9bd7-43f2-bba8-769993fbccbf"}>, call domain error:<Get "http://192.168.0.112:8848/nacos/v1/cs/configs?dataId=user-srv.json&group=dev&tenant=08da6372-9bd7-43f2-bba8-769993fbccbf": dial tcp 192.168.0.112:8848: connectex: No connection could be made because the target machine actively refused it.> , result:<>
+2023-05-11T10:35:00.021+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-srv.json","group":"dev","tenant":"08da6372-9bd7-43f2-bba8-769993fbccbf"}>, call domain error:<Get "http://192.168.0.112:8848/nacos/v1/cs/configs?tenant=08da6372-9bd7-43f2-bba8-769993fbccbf&dataId=user-srv.json&group=dev": dial tcp 192.168.0.112:8848: connectex: No connection could be made because the target machine actively refused it.> , result:<>
+2023-05-11T10:35:02.053+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-srv.json","group":"dev","tenant":"08da6372-9bd7-43f2-bba8-769993fbccbf"}>, call domain error:<Get "http://192.168.0.112:8848/nacos/v1/cs/configs?tenant=08da6372-9bd7-43f2-bba8-769993fbccbf&dataId=user-srv.json&group=dev": dial tcp 192.168.0.112:8848: connectex: No connection could be made because the target machine actively refused it.> , result:<>
+2023-05-11T10:35:02.053+0800	[31mERROR[0m	config_client/config_client.go:202	get config from server error:Get "http://192.168.0.112:8848/nacos/v1/cs/configs?tenant=08da6372-9bd7-43f2-bba8-769993fbccbf&dataId=user-srv.json&group=dev": dial tcp 192.168.0.112:8848: connectex: No connection could be made because the target machine actively refused it. 
+2023-05-11T10:42:50.833+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T10:42:52.880+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-srv.json","group":"dev","tenant":"08da6372-9bd7-43f2-bba8-769993fbccbf"}>, call domain error:<Get "http://192.168.0.112:8848/nacos/v1/cs/configs?dataId=user-srv.json&group=dev&tenant=08da6372-9bd7-43f2-bba8-769993fbccbf": dial tcp 192.168.0.112:8848: connectex: No connection could be made because the target machine actively refused it.> , result:<>
+2023-05-11T10:42:54.912+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-srv.json","group":"dev","tenant":"08da6372-9bd7-43f2-bba8-769993fbccbf"}>, call domain error:<Get "http://192.168.0.112:8848/nacos/v1/cs/configs?dataId=user-srv.json&group=dev&tenant=08da6372-9bd7-43f2-bba8-769993fbccbf": dial tcp 192.168.0.112:8848: connectex: No connection could be made because the target machine actively refused it.> , result:<>
+2023-05-11T16:49:07.051+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T16:49:07.081+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-goods.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-11T16:49:07.085+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-goods.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-11T16:49:07.089+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-goods.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-11T16:49:07.089+0800	[31mERROR[0m	config_client/config_client.go:202	get config from server error:[404] config data not exist
+ 
+2023-05-11T16:49:07.089+0800	[33mWARN[0m	config_client/config_client.go:207	[client.GetConfig] config not found, dataId: user-goods.json, group: dev, namespaceId: 6efb7713-45af-4591-a8a4-cb1a9903be09.
+2023-05-11T16:57:50.082+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T16:57:50.090+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-goods.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-11T16:57:50.094+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-goods.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-11T16:57:50.098+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-goods.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-11T16:57:50.098+0800	[31mERROR[0m	config_client/config_client.go:202	get config from server error:[404] config data not exist
+ 
+2023-05-11T16:57:50.098+0800	[33mWARN[0m	config_client/config_client.go:207	[client.GetConfig] config not found, dataId: user-goods.json, group: dev, namespaceId: 6efb7713-45af-4591-a8a4-cb1a9903be09.
+2023-05-11T16:58:39.162+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T21:28:27.826+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T21:43:32.327+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T21:49:27.861+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T21:52:07.946+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T21:57:12.323+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T22:02:58.944+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T22:03:42.286+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T22:12:03.171+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T22:12:57.991+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-11T22:20:03.477+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
