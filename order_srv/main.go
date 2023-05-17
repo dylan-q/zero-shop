@@ -5,20 +5,19 @@ import (
 	"fmt"
 	uuid "github.com/satori/go.uuid"
 	"go.uber.org/zap"
-	"mxshop_srvs/goods_srv/global"
-	"mxshop_srvs/goods_srv/utils"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/health"
+	"google.golang.org/grpc/health/grpc_health_v1"
+	"mxshop_srvs/order_srv/global"
+	"mxshop_srvs/order_srv/handler"
+	"mxshop_srvs/order_srv/initialize"
+	"mxshop_srvs/order_srv/proto"
+	"mxshop_srvs/order_srv/utils"
+	"mxshop_srvs/order_srv/utils/register/consul"
 	"net"
 	"os"
 	"os/signal"
 	"syscall"
-
-	"github.com/hashicorp/consul/api"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/health"
-	"google.golang.org/grpc/health/grpc_health_v1"
-	"mxshop_srvs/goods_srv/handler"
-	"mxshop_srvs/goods_srv/initialize"
-	"mxshop_srvs/goods_srv/proto"
 )
 
 func main() {
@@ -28,6 +27,7 @@ func main() {
 	initialize.InitLogger()
 	initialize.InitConfig()
 	initialize.InitDB()
+	initialize.InitSrvConn()
 
 	flag.Parse()
 
@@ -40,7 +40,7 @@ func main() {
 	zap.S().Info("IP: ", *ip)
 	zap.S().Info("PORT: ", *port)
 	server := grpc.NewServer()
-	proto.RegisterGoodsServer(server, &handler.GoodsServer{})
+	proto.RegisterOrderServer(server, &handler.OrderServer{})
 	lis, err := net.Listen("tcp", fmt.Sprintf("%s:%d", *ip, *port))
 	if err != nil {
 		panic(err)
@@ -48,37 +48,12 @@ func main() {
 
 	grpc_health_v1.RegisterHealthServer(server, health.NewServer())
 
-	cfg := api.DefaultConfig()
-	cfg.Address = fmt.Sprintf("%s:%d", global.ServerConfig.ConsulInfo.Host, global.ServerConfig.ConsulInfo.Port)
-
-	client, err := api.NewClient(cfg)
-	if err != nil {
-		panic(err)
-	}
-	//生成对应的检查对象
-	check := &api.AgentServiceCheck{
-		GRPC:                           fmt.Sprintf("%s:%d", *ip, *port), //监听的服务地址
-		Timeout:                        "5s",
-		Interval:                       "5s",
-		DeregisterCriticalServiceAfter: "10s",
-	}
-
-	//生成注册对象
-	registration := new(api.AgentServiceRegistration)
-	registration.Name = global.ServerConfig.Name
+	registerClient := consul.NewRegistryClient(global.ServerConfig.ConsulInfo.Host, global.ServerConfig.ConsulInfo.Port)
 	serviceId := fmt.Sprintf("%s", uuid.NewV4())
-	registration.ID = serviceId
-	registration.Port = *port
-	registration.Tags = global.ServerConfig.Tags
-	registration.Address = *ip
-	registration.Check = check
-
-	err = client.Agent().ServiceRegister(registration)
-	//client.Agent().ServiceDeregister()
+	err = registerClient.Register(*ip, *port, global.ServerConfig.Name, global.ServerConfig.Tags, serviceId)
 	if err != nil {
-		panic(err)
+		zap.S().Panic("服务注册失败:", err.Error())
 	}
-
 	go func() {
 		err = server.Serve(lis)
 		if err != nil {
@@ -89,7 +64,7 @@ func main() {
 	quit := make(chan os.Signal)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
-	if err = client.Agent().ServiceDeregister(serviceId); err != nil {
+	if err = registerClient.DeRegister(serviceId); err != nil {
 		zap.S().Info("注销失败")
 	}
 	zap.S().Info("注销成功")

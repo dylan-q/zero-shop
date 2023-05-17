@@ -5,61 +5,56 @@ import (
 	"fmt"
 	"google.golang.org/grpc"
 	"mxshop_srvs/inventory_srv/proto"
+	"sync"
 )
 
-var brandClient proto.GoodsClient
+var invClient proto.InventoryClient
 var conn *grpc.ClientConn
-
-func TestBatchGetGoods() {
-	rsp, err := brandClient.BatchGetGoods(context.Background(), &proto.BatchGoodsIdInfo{
-		Id: []int32{421, 422, 423},
-	})
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(rsp.Total)
-	for _, good := range rsp.Data {
-		fmt.Println(good.Name, good.ShopPrice)
-	}
-}
-
-func TestGetGoodsDetail() {
-	rsp, err := brandClient.GetGoodsDetail(context.Background(), &proto.GoodInfoRequest{
-		Id: 421,
-	})
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(rsp.Name)
-	fmt.Println(rsp.DescImages)
-}
 
 func Init() {
 	var err error
-	conn, err = grpc.Dial("192.168.0.112:14566", grpc.WithInsecure())
+	conn, err = grpc.Dial("192.168.0.112:10762", grpc.WithInsecure())
 	if err != nil {
 		panic(err)
 	}
-	brandClient = proto.NewGoodsClient(conn)
+	invClient = proto.NewInventoryClient(conn)
 }
-func TestGetGoodsList() {
-	rsp, err := brandClient.GoodsList(context.Background(), &proto.GoodsFilterRequest{
-		TopCategory: 136688,
-		//PriceMin:    90,
-		//KeyWords: "深海速冻",
+func TestSetInv(goodsId, Num int32) {
+	_, err := invClient.SetInv(context.Background(), &proto.GoodsInvInfo{
+		GoodsId: goodsId,
+		Num:     Num,
 	})
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(rsp.Data)
-	for _, good := range rsp.Data {
-		fmt.Println(good.Name, good.ShopPrice)
+	fmt.Println("设置库存成功")
+}
+func TestSell(wg *sync.WaitGroup) {
+	/*
+		1. 第一件扣减成功： 第二件： 1. 没有库存信息 2. 库存不足
+		2. 两件都扣减成功
+	*/
+	defer wg.Done()
+	_, err := invClient.Sell(context.Background(), &proto.SellInfo{
+		GoodsInfo: []*proto.GoodsInvInfo{
+			{GoodsId: 421, Num: 1},
+			//{GoodsId: 422, Num: 30},
+		},
+	})
+	if err != nil {
+		panic(err)
 	}
+	fmt.Println("库存扣减成功")
 }
 func main() {
+	var wg sync.WaitGroup
 	Init()
 	//TestCreateUser()
-	TestGetGoodsList()
+	wg.Add(100)
+	for i := 0; i < 100; i++ {
+		go TestSell(&wg)
+	}
+	wg.Wait()
 	//TestBatchGetGoods()
 	//TestGetGoodsDetail()
 

@@ -30,5 +30,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	db.AutoMigrate(&model.Inventory{})
+	db.AutoMigrate(&model.StockSellDetail{})
 }

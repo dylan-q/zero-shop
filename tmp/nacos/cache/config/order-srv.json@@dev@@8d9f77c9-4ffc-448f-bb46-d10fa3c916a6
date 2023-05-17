@@ -1,16 +1,18 @@
 {
-  "name": "goods-srv",
-  "tags":["goods","server"],
-  "es_info":{
-    "host":"192.168.0.112",
-    "port":9200
+  "name": "order-srv",
+  "goods_srv":{
+    "name": "goods-srv"
   },
+  "inventory_srv":{
+    "name": "inventory-srv"
+  },
+  "tags":["order","server"],
   "mysql": {
     "host": "127.0.0.1",
     "port": 3306,
     "user": "root",
     "password": "root",
-    "db": "shop_goods_srv"
+    "db": "shop_order_srv"
   },
   "consul": {
     "host": "127.0.0.1",

@@ -45,3 +45,131 @@
 2023-05-11T22:12:03.171+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
 2023-05-11T22:12:57.991+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
 2023-05-11T22:20:03.477+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-12T09:07:19.399+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-12T09:31:05.074+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-12T11:47:37.630+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-12T11:56:37.016+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-12T13:08:07.818+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-12T15:17:13.014+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-12T15:18:39.592+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-12T15:18:49.264+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-12T15:20:51.787+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-12T15:25:59.224+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-12T15:27:55.518+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T11:04:17.720+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T11:09:57.186+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T11:11:17.313+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T11:11:17.325+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-13T11:11:17.331+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-13T11:11:17.336+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-13T11:11:17.336+0800	[31mERROR[0m	config_client/config_client.go:202	get config from server error:[404] config data not exist
+ 
+2023-05-13T11:11:17.336+0800	[33mWARN[0m	config_client/config_client.go:207	[client.GetConfig] config not found, dataId: inventory-srv.json, group: dev, namespaceId: 6efb7713-45af-4591-a8a4-cb1a9903be09.
+2023-05-13T11:15:26.601+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T11:15:26.609+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-13T11:15:26.616+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-13T11:15:26.620+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-13T11:15:26.620+0800	[31mERROR[0m	config_client/config_client.go:202	get config from server error:[404] config data not exist
+ 
+2023-05-13T11:15:26.621+0800	[33mWARN[0m	config_client/config_client.go:207	[client.GetConfig] config not found, dataId: inventory-srv.json, group: dev, namespaceId: 6efb7713-45af-4591-a8a4-cb1a9903be09.
+2023-05-13T11:16:09.912+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T11:16:15.926+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-13T11:16:15.931+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-13T11:16:15.935+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2023-05-13T11:16:15.935+0800	[31mERROR[0m	config_client/config_client.go:202	get config from server error:[404] config data not exist
+ 
+2023-05-13T11:16:15.936+0800	[33mWARN[0m	config_client/config_client.go:207	[client.GetConfig] config not found, dataId: inventory-srv.json, group: dev, namespaceId: 6efb7713-45af-4591-a8a4-cb1a9903be09.
+2023-05-13T11:17:22.336+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T11:17:57.264+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T12:09:55.747+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T12:10:39.974+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T12:11:48.407+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T12:12:09.411+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T21:40:02.857+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T21:40:19.078+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-13T21:41:17.373+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T13:35:28.966+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T13:49:23.967+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T13:50:10.192+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T13:52:04.868+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T13:55:01.561+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T13:57:22.796+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T13:58:43.349+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T14:00:14.017+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T14:04:37.912+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T14:18:47.166+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T20:48:30.453+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T20:54:30.497+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T20:58:10.284+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:01:52.535+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:25:19.510+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:26:03.448+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:29:40.457+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:32:02.341+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:32:34.318+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:32:35.776+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:33:36.483+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:36:30.865+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:37:14.699+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:39:22.231+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:42:48.046+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:44:41.611+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:44:58.825+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:54:33.453+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T21:55:50.101+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:01:43.536+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:04:01.735+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:04:38.288+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:08:47.949+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:14:36.173+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:22:41.500+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:24:26.834+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:27:17.761+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:27:27.321+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:31:08.449+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:32:36.464+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:32:52.124+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:39:25.001+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:39:54.872+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:40:47.138+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:45:57.192+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:47:41.241+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:48:02.050+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:53:10.995+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:54:36.372+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T22:56:26.731+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T23:09:10.345+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T23:11:33.386+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T23:12:59.055+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T23:14:08.987+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T23:22:52.391+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T23:24:31.623+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T23:27:18.261+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T23:31:15.997+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T23:35:46.553+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T23:40:23.107+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-16T23:42:44.835+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-17T17:15:58.617+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2023-05-17T17:16:03.635+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"goods-srv.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<Get "http://192.168.0.112:8848/nacos/v1/cs/configs?group=dev&tenant=6efb7713-45af-4591-a8a4-cb1a9903be09&dataId=goods-srv.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers)> , result:<>
+2023-05-17T17:16:08.647+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"goods-srv.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<Get "http://192.168.0.112:8848/nacos/v1/cs/configs?dataId=goods-srv.json&group=dev&tenant=6efb7713-45af-4591-a8a4-cb1a9903be09": context deadline exceeded (Client.Timeout exceeded while awaiting headers)> , result:<>
+2023-05-17T17:16:13.655+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"goods-srv.json","group":"dev","tenant":"6efb7713-45af-4591-a8a4-cb1a9903be09"}>, call domain error:<Get "http://192.168.0.112:8848/nacos/v1/cs/configs?dataId=goods-srv.json&group=dev&tenant=6efb7713-45af-4591-a8a4-cb1a9903be09": context deadline exceeded (Client.Timeout exceeded while awaiting headers)> , result:<>
+2023-05-17T17:16:13.655+0800	[31mERROR[0m	config_client/config_client.go:202	get config from server error:Get "http://192.168.0.112:8848/nacos/v1/cs/configs?dataId=goods-srv.json&group=dev&tenant=6efb7713-45af-4591-a8a4-cb1a9903be09": context deadline exceeded (Client.Timeout exceeded while awaiting headers) 
+2023-05-17T17:42:14.729+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>

@@ -8,7 +8,7 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/vo"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
-	"mxshop_srvs/goods_srv/global"
+	"mxshop_srvs/order_srv/global"
 )
 
 func GetEnvInfo(env string) bool {
@@ -22,9 +22,9 @@ func InitConfig() {
 	debug := GetEnvInfo("SHOP_DEBUG")
 	fmt.Println(debug)
 	configFilePrefix := "config"
-	configFileName := fmt.Sprintf("goods_srv/%s-pro.yaml", configFilePrefix)
+	configFileName := fmt.Sprintf("order_srv/%s-pro.yaml", configFilePrefix)
 	if debug {
-		configFileName = fmt.Sprintf("goods_srv/%s-debug.yaml", configFilePrefix)
+		configFileName = fmt.Sprintf("order_srv/%s-debug.yaml", configFilePrefix)
 	}
 
 	v := viper.New()

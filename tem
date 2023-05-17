@@ -10,3 +10,11 @@ docker run -d -p 8500:8500 -p 8300:8300 -p 8301:8301 -p 8302:8302 -p 8600:8600/u
 docker container update --restart=always 容器名字
 
 docker run --name nacos-standalon -e MODE=standalone -e JVM_XMS=512M -e JVM_XMX=512M -e JVM_XMN=256m -p 8848:8848 -d nacos/nacos-server:latest
+
+docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms128m -Xmx256m" -v /e/data/elasticsearch/config/elasticsearch.yaml:/usr/share/elasticsearch/config/elasticsearch.yaml -v /e/data/elasticsearch/data:/usr/share/elasticsearch/data -v /e/data/elasticsearch/plugins:/usr/share/elasticsearch/plugins -d elasticsearch:8.5.1
+
+docker run -d --name kibana -e ELASTICSEARCH_HOST="http://192.168.0.112:9200" -p 5601:5601 kibana:8.5.1
+
+docker exec -it elasticsearch /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
+
+docker run --rm -e "KONG_DATABASE=postgres" -e "KONG_PG_HOST=192.168.0.112" -e "KONG_PG_PASSWORD=kong" -e "POSTGRES_USER=kong" -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" kong kong migrations bootstrap
