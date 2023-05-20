@@ -18,3 +18,5 @@ docker run -d --name kibana -e ELASTICSEARCH_HOST="http://192.168.0.112:9200" -p
 docker exec -it elasticsearch /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
 
 docker run --rm -e "KONG_DATABASE=postgres" -e "KONG_PG_HOST=192.168.0.112" -e "KONG_PG_PASSWORD=kong" -e "POSTGRES_USER=kong" -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" kong kong migrations bootstrap
+
+docker run -d -p 27017:27017 --network mongowork --name mongodb -e MONGO_INITDB_ROOT_USERNAME=mongo -e MONGO_INITDB_ROOT_PASSWORD=123456 -v /e/data/mongo/data:/data/db mongo
