@@ -1,0 +1,29 @@
+syntax = "v1"
+
+info(
+	title: "用户服务"
+	desc: "用户服务"
+	author: "qintao"
+	email: "5842685914@qq.com"
+	version: "v1"
+)
+type LoginReq {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+type LoginRsp {
+	Token string `json:"token"`
+}
+@server(
+	group : user
+)
+
+service user-api {
+	@doc "用户登录"
+	@handler login
+	post /user/login (LoginReq) returns (LoginRsp)
+
+	@doc "用户注册"
+	@handler register
+	post /user/register (LoginReq) returns (LoginRsp)
+}

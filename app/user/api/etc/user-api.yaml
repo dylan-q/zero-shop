@@ -1,0 +1,12 @@
+Name: user-api
+Host: 0.0.0.0
+Port: 8001
+
+UserRpcConf:
+  Endpoints:
+    - 127.0.0.1:8080
+  NonBlock: true
+
+JwtAuth:
+  AccessSecret: 123456789abcdefghijklmn
+  AccessExpire: 1000000
