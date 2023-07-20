@@ -3,7 +3,7 @@ package user
 import (
 	"context"
 	"github.com/pkg/errors"
-	rpc_user "zero-shop/app/user/rpc/user"
+	rpc "zero-shop/app/user/rpc/user"
 	my_utils "zero-shop/pkg/utils"
 
 	"zero-shop/app/user/api/internal/svc"
@@ -32,7 +32,7 @@ func (l *DetailLogic) Detail(req *types.UserDetailReq) (resp *types.UserDetailRs
 	if uid <= 0 {
 		return nil, errors.New("解析token失败")
 	}
-	user, err := l.svcCtx.UserRpc.GetUserInfo(l.ctx, &rpc_user.GetUserInfoRequest{
+	user, err := l.svcCtx.UserRpc.GetUserInfo(l.ctx, &rpc.GetUserInfoRequest{
 		ID: uid,
 	})
 	if err != nil {

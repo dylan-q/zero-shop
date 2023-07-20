@@ -13,6 +13,7 @@ import (
 )
 
 type (
+	GetUserByNameRequest = pb.GetUserByNameRequest
 	GetUserInfoRequest   = pb.GetUserInfoRequest
 	GetUserInfoResponse  = pb.GetUserInfoResponse
 	UserLoginRequest     = pb.UserLoginRequest
@@ -24,6 +25,7 @@ type (
 		Login(ctx context.Context, in *UserLoginRequest, opts ...grpc.CallOption) (*UserLoginResponse, error)
 		Register(ctx context.Context, in *UserRegisterRequest, opts ...grpc.CallOption) (*UserRegisterResponse, error)
 		GetUserInfo(ctx context.Context, in *GetUserInfoRequest, opts ...grpc.CallOption) (*GetUserInfoResponse, error)
+		GetUserByName(ctx context.Context, in *GetUserByNameRequest, opts ...grpc.CallOption) (*GetUserInfoResponse, error)
 	}
 
 	defaultUser struct {
@@ -50,4 +52,9 @@ func (m *defaultUser) Register(ctx context.Context, in *UserRegisterRequest, opt
 func (m *defaultUser) GetUserInfo(ctx context.Context, in *GetUserInfoRequest, opts ...grpc.CallOption) (*GetUserInfoResponse, error) {
 	client := pb.NewUserClient(m.cli.Conn())
 	return client.GetUserInfo(ctx, in, opts...)
+}
+
+func (m *defaultUser) GetUserByName(ctx context.Context, in *GetUserByNameRequest, opts ...grpc.CallOption) (*GetUserInfoResponse, error) {
+	client := pb.NewUserClient(m.cli.Conn())
+	return client.GetUserByName(ctx, in, opts...)
 }

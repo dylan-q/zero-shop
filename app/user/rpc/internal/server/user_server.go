@@ -36,3 +36,8 @@ func (s *UserServer) GetUserInfo(ctx context.Context, in *pb.GetUserInfoRequest)
 	l := logic.NewGetUserInfoLogic(ctx, s.svcCtx)
 	return l.GetUserInfo(in)
 }
+
+func (s *UserServer) GetUserByName(ctx context.Context, in *pb.GetUserByNameRequest) (*pb.GetUserInfoResponse, error) {
+	l := logic.NewGetUserByNameLogic(ctx, s.svcCtx)
+	return l.GetUserByName(in)
+}

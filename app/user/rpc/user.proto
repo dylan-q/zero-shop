@@ -17,7 +17,8 @@ message UserRegisterRequest {
   string password = 2;
 }
 message UserRegisterResponse {
-  string token = 1;
+  int64 ID = 1;
+  string UserName = 2;
 }
 message GetUserInfoResponse{
   int64 ID = 1;
@@ -26,9 +27,13 @@ message GetUserInfoResponse{
 message GetUserInfoRequest {
   int64 ID = 1;
 }
+message GetUserByNameRequest{
+  string username = 1;
+}
 
 service User {
   rpc Login(UserLoginRequest) returns(UserLoginResponse);
   rpc Register(UserRegisterRequest) returns (UserRegisterResponse);
   rpc GetUserInfo(GetUserInfoRequest) returns (GetUserInfoResponse);
+  rpc GetUserByName(GetUserByNameRequest) returns (GetUserInfoResponse);
 }

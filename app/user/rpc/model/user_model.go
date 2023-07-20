@@ -15,6 +15,7 @@ type (
 	UserModel interface {
 		userModel
 		FindOneByNameAndPassword(ctx context.Context, UserName string, password string) (*User, error)
+		FindOneByName(ctx context.Context, UserName string) (*User, error)
 	}
 
 	customUserModel struct {
@@ -32,6 +33,19 @@ func (m *defaultUserModel) FindOneByNameAndPassword(ctx context.Context, usernam
 	query := fmt.Sprintf("select %s from %s where `username` = ? and `password` = ? limit 1", userRows, m.table)
 	var resp User
 	err := m.conn.QueryRowCtx(ctx, &resp, query, username, password)
+	switch err {
+	case nil:
+		return &resp, nil
+	case sqlc.ErrNotFound:
+		return nil, ErrNotFound
+	default:
+		return nil, err
+	}
+}
+func (m *defaultUserModel) FindOneByName(ctx context.Context, username string) (*User, error) {
+	query := fmt.Sprintf("select %s from %s where `username` = ?  limit 1", userRows, m.table)
+	var resp User
+	err := m.conn.QueryRowCtx(ctx, &resp, query, username)
 	switch err {
 	case nil:
 		return &resp, nil
