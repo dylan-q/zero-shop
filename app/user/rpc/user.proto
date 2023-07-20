@@ -24,7 +24,7 @@ message GetUserInfoResponse{
   string UserName = 2;
 }
 message GetUserInfoRequest {
-
+  int64 ID = 1;
 }
 
 service User {

@@ -9,3 +9,11 @@ type LoginReq struct {
 type LoginRsp struct {
 	Token string `json:"token"`
 }
+
+type UserDetailReq struct {
+}
+
+type UserDetailRsq struct {
+	ID       int64  `json:"id"`
+	UserName string `json:"username"`
+}

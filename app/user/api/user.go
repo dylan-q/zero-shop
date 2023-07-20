@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-
 	"zero-shop/app/user/api/internal/config"
 	"zero-shop/app/user/api/internal/handler"
 	"zero-shop/app/user/api/internal/svc"

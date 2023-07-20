@@ -14,6 +14,12 @@ type LoginReq {
 type LoginRsp {
 	Token string `json:"token"`
 }
+type UserDetailReq {
+}
+type UserDetailRsq {
+	ID       int64  `json:"id"`
+	UserName string `json:"username"`
+}
 @server(
 	group : user
 )
@@ -21,9 +27,19 @@ type LoginRsp {
 service user-api {
 	@doc "用户登录"
 	@handler login
-	post /user/login (LoginReq) returns (LoginRsp)
+	post /user/login (UserDetailReq) returns (UserDetailRsq)
 
 	@doc "用户注册"
 	@handler register
 	post /user/register (LoginReq) returns (LoginRsp)
+}
+
+@server(
+	group : user
+	jwt: JwtAuth
+)
+service user-api {
+	@doc "用户信息"
+	@handler detail
+	get /user/info (UserDetailReq) returns (UserDetailRsq)
 }

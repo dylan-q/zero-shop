@@ -27,7 +27,7 @@ type (
 		FindOne(ctx context.Context, id int64) (*User, error)
 		Update(ctx context.Context, data *User) error
 		Delete(ctx context.Context, id int64) error
-		FindOneByNameAndPassword(ctx context.Context, UserName string,password string) (*User, error)
+
 	}
 
 	defaultUserModel struct {
@@ -91,16 +91,4 @@ func (m *defaultUserModel) Update(ctx context.Context, data *User) error {
 func (m *defaultUserModel) tableName() string {
 	return m.table
 }
-func (m *defaultUserModel) FindOneByNameAndPassword(ctx context.Context, username string,password string) (*User, error) {
-	query := fmt.Sprintf("select %s from %s where `username` = ? and `password` = ? limit 1", userRows, m.table)
-	var resp User
-	err := m.conn.QueryRowCtx(ctx, &resp, query, username,password)
-	switch err {
-	case nil:
-		return &resp, nil
-	case sqlc.ErrNotFound:
-		return nil, ErrNotFound
-	default:
-		return nil, err
-	}
-}
+
