@@ -7,7 +7,7 @@ type ListReq struct {
 }
 
 type DetailReq struct {
-	Id int64 `json:"id"`
+	Id int64 `form:"id"`
 }
 
 type ListResp struct {
@@ -16,8 +16,8 @@ type ListResp struct {
 }
 
 type Category struct {
-	Id   int64  `db:"id"`
-	Name string `db:"name"`
+	Id   int64  `json:"id"`
+	Name string `json:"name"`
 }
 
 type GoodsInfo struct {
@@ -37,4 +37,5 @@ type GoodsInfo struct {
 	GoodsBrief  string   `json:"goods_brief"`  // 商品简介
 	GoodsDetail string   `json:"goods_detail"` // 商品详情
 	CreateTime  int64    `json:"create_time"`
+	UpdateTime  int64    `json:"update_time"`
 }

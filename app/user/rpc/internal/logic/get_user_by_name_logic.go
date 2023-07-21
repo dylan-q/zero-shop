@@ -2,8 +2,6 @@ package logic
 
 import (
 	"context"
-	"fmt"
-
 	"zero-shop/app/user/rpc/internal/svc"
 	"zero-shop/app/user/rpc/pb"
 
@@ -26,7 +24,7 @@ func NewGetUserByNameLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Get
 
 func (l *GetUserByNameLogic) GetUserByName(in *pb.GetUserByNameRequest) (*pb.GetUserInfoResponse, error) {
 	user, err := l.svcCtx.UserModel.FindOneByName(l.ctx, in.Username)
-	fmt.Println(err)
+
 	if err != nil {
 		return nil, err
 	}

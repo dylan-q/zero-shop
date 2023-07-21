@@ -34,13 +34,7 @@ func (l *DetailLogic) Detail(in *pb.DetailRequest) (*pb.GoodsInfoResponse, error
 	_ = copier.Copy(&info, goods)
 	category, err := l.svcCtx.CateModel.FindOne(l.ctx, goods.CategoryId)
 	var cate pb.CategoryInfoResponse
-	if err != nil {
-		cate.Name = ""
-		cate.Id = 0
-	} else {
-		cate.Name = category.Name
-		cate.Id = category.Id
-	}
+	_ = copier.Copy(&cate, category)
 	info.Category = &cate
 	return &info, nil
 }

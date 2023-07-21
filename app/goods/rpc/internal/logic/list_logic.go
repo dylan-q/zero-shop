@@ -2,7 +2,7 @@ package logic
 
 import (
 	"context"
-	"fmt"
+	"github.com/jinzhu/copier"
 
 	"zero-shop/app/goods/rpc/internal/svc"
 	"zero-shop/app/goods/rpc/pb"
@@ -31,7 +31,6 @@ func (l *ListLogic) List(in *pb.ListRequest) (*pb.ListResponse, error) {
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println(in.Page, in.PageSize)
 	result, err := l.svcCtx.GoodsModel.FindPageListByPage(l.ctx, in.Page, in.PageSize, "id")
 	if err != nil {
 		return nil, err
@@ -39,14 +38,8 @@ func (l *ListLogic) List(in *pb.ListRequest) (*pb.ListResponse, error) {
 	var data []*pb.GoodsInfoResponse
 	for _, v := range result {
 		var cate pb.CategoryInfoResponse
-		category, err := l.svcCtx.CateModel.FindOne(l.ctx, v.CategoryId)
-		if err != nil {
-			cate.Name = ""
-			cate.Id = 0
-		} else {
-			cate.Name = category.Name
-			cate.Id = category.Id
-		}
+		category, _ := l.svcCtx.CateModel.FindOne(l.ctx, v.CategoryId)
+		_ = copier.Copy(&cate, category)
 		var info pb.GoodsInfoResponse
 		info.Id = v.Id
 		info.GoodsName = v.GoodsName

@@ -2,7 +2,6 @@ package logic
 
 import (
 	"context"
-	"fmt"
 	"github.com/jinzhu/copier"
 	"zero-shop/app/goods/rpc/pb"
 
@@ -36,8 +35,7 @@ func (l *ListLogic) List(req *types.ListReq) (resp *types.ListResp, err error) {
 		return nil, err
 	}
 	var resList []types.GoodsInfo
-	fmt.Println(len(list.Data))
-	fmt.Println(list.Data)
+
 	if len(list.Data) > 0 {
 		for _, v := range list.Data {
 			var info types.GoodsInfo
