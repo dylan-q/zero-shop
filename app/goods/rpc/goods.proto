@@ -1,6 +1,5 @@
 syntax = "proto3";
-//import  "google/protobuf/timestamp.proto";
-//import public "google/protobuf/timestamp.proto";
+
 package pb;
 option go_package = "./pb";
 
@@ -35,7 +34,7 @@ message GoodsInfoResponse {
   CategoryInfoResponse category = 16;
 }
 message DetailRequest {
-  int64 ID = 1;
+  int64 id = 1;
 }
 service goods {
   rpc List(ListRequest) returns (ListResponse);

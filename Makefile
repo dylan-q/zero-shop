@@ -1,3 +1,4 @@
+# Makefile
 
 
 
@@ -16,8 +17,14 @@ ctl-user-rpc:
 ctl-category-model:
 	@goctl model mysql datasource -url="root:root@tcp(127.0.0.1:3306)/zero-shop" -table="goods"  -dir="./genModel"  --style=go_zero
 
+ctl-goods-api: # 初始化user-api服务
+	@goctl api go -api ./app/goods/api/goods.api -dir ./app/goods/api --style=go_zero
+
 ctl-goods-rpc:
 	@goctl rpc protoc ./app/goods/rpc/goods.proto --go_out=./app/goods/rpc/ --go-grpc_out=./app/goods/rpc/ --zrpc_out=./app/goods/rpc --style=go_zero
 
-run-goods-rpc: # 启动 user-rpc 服务
+run-goods-api: # 启动 goods-api 服务
+	@go run ./app/goods/api/goods.go  -f ./app/goods/api/etc/goods-api.yaml
+
+run-goods-rpc: # 启动 goods-rpc 服务
 	@go run ./app/goods/rpc/goods.go  -f ./app/goods/rpc/etc/goods.yaml

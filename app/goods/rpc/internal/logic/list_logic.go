@@ -38,6 +38,15 @@ func (l *ListLogic) List(in *pb.ListRequest) (*pb.ListResponse, error) {
 	}
 	var data []*pb.GoodsInfoResponse
 	for _, v := range result {
+		var cate pb.CategoryInfoResponse
+		category, err := l.svcCtx.CateModel.FindOne(l.ctx, v.CategoryId)
+		if err != nil {
+			cate.Name = ""
+			cate.Id = 0
+		} else {
+			cate.Name = category.Name
+			cate.Id = category.Id
+		}
 		var info pb.GoodsInfoResponse
 		info.Id = v.Id
 		info.GoodsName = v.GoodsName
@@ -54,6 +63,7 @@ func (l *ListLogic) List(in *pb.ListRequest) (*pb.ListResponse, error) {
 		info.MarketPrice = float32(v.MarketPrice)
 		info.ShopPrice = float32(v.ShopPrice)
 		info.ShipFree = v.ShipFree
+		info.Category = &cate
 		data = append(data, &info)
 	}
 	return &pb.ListResponse{

@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"fmt"
 	s_utils "zero-shop/pkg/utils"
 
 	"zero-shop/app/user/rpc/internal/svc"
@@ -26,6 +27,7 @@ func NewLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *LoginLogic 
 
 func (l *LoginLogic) Login(in *pb.UserLoginRequest) (*pb.UserLoginResponse, error) {
 	// todo: add your logic here and delete this line
+	fmt.Println(in)
 	user, err := l.svcCtx.UserModel.FindOneByNameAndPassword(l.ctx, in.Username, s_utils.MD5(in.Password))
 	if err != nil {
 		return nil, err

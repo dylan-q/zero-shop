@@ -4,9 +4,6 @@
 // - protoc             v3.19.4
 // source: app/goods/rpc/goods.proto
 
-//import  "google/protobuf/timestamp.proto";
-//import public "google/protobuf/timestamp.proto";
-
 package pb
 
 import (

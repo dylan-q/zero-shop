@@ -16,5 +16,6 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
 		Config:     c,
 		GoodsModel: model.NewGoodsModel(sqlx.NewMysql(c.DB.DataSource)),
+		CateModel:  model.NewCategoryModel(sqlx.NewMysql(c.DB.DataSource)),
 	}
 }

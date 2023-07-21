@@ -35,7 +35,6 @@ func (m *defaultGoodsModel) FindPageListByPage(ctx context.Context, page, pageSi
 		page = 1
 	}
 	offset := (page - 1) * pageSize
-	fmt.Println(page, pageSize)
 	var resp []*Goods
 	query, values, err := sq.Select("*").From(m.table).OrderBy("id DESC").Offset(uint64(offset)).Limit(uint64(pageSize)).ToSql()
 	err = m.conn.QueryRowsCtx(ctx, &resp, query, values...)
