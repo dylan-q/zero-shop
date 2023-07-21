@@ -1,0 +1,15 @@
+syntax = "v1"
+
+info(
+    title: "商品服务"
+    desc: "商品服务"
+    author: "qintao"
+    email: "5842685914@qq.com"
+    version: "v1"
+)
+
+service goods-api {
+    @doc "商品列表"
+    @handler list
+    get /goods/list () returns ()
+}
