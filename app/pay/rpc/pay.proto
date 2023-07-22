@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package pb;
+option go_package = "./pb";
+
+message PayReq {
+  string OrderSn = 1;
+  int64 UserId = 2;
+}
+message PayResp{
+  int64 Id = 1;
+}
+message ThirdReq{
+  int64 Id = 1;
+}
+message ThirdResp{
+  int64 Id = 1;
+  int64 CreateTime = 2;
+  int64 UserId = 3;
+  int64 PayMode = 4; // 1 微信支付 2 支付宝支付
+  int64 PayStatus = 5;
+  int64 PayTime = 6;
+  string TradeType = 7;
+  string TradeState = 8;
+  double PayTotal = 9;
+  string TransactionId = 10;
+  string TradeStateDesc = 11;
+  string OrderSn = 12;
+}
+
+service pay {
+  rpc Create(PayReq) returns (PayResp);
+  rpc Third(ThirdReq) returns (ThirdResp);
+}

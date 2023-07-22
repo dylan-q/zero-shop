@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package pb;
+option go_package = "./pb";
+
+
+message CreateOrderReq {
+  int64 UserId = 1;
+  int64 GoodsId = 2;
+  double MarketPrice = 3;
+  double SalePrice = 4;
+  int64 OrderStatus = 5;
+}
+
+message CreateOrderResp {
+  int64 Id = 1;
+  string Sn = 2;
+  int64 GoodsId = 3;
+  int64 UserId = 4;
+}
+message ThirdInfo{
+  int64 Id = 1;
+  int64 CreateTime = 2;
+  int64 UserId = 3;
+  int64 PayMode = 4;
+  string TradeType = 5;
+  string TradeState = 6;
+  double PayTotal = 7;
+  string TransactionId = 9;
+  string TradeStateDesc = 10;
+  string OrderSn = 11;
+  int64 PayStatus = 12;
+  int64 PayTime = 13;
+}
+message GoodsInfo{
+  int64 id = 1;
+  string goodsName = 3;
+}
+message OrderInfoResp{
+  int64 UserId = 1;
+  int64 GoodsId = 2;
+  double MarketPrice = 3;
+  double SalePrice = 4;
+  int64 OrderStatus = 5;
+  int64 CreateTime = 6;
+  int64 Id = 7;
+  GoodsInfo Goods = 8;
+  ThirdInfo Third = 9;
+  string Sn = 10;
+}
+message ListReq{
+  int64 Page = 1;
+  int64 PageSize = 2;
+}
+message ListResp{
+  int64 Total = 1;
+  repeated OrderInfoResp data = 2;
+}
+message DetailReq{
+  int64 Id = 1;
+}
+
+service order {
+  rpc Create(CreateOrderReq) returns (CreateOrderResp);
+  rpc List(ListReq)returns(ListResp);
+  rpc Detail(DetailReq)returns(OrderInfoResp);
+}
