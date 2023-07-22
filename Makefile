@@ -1,9 +1,12 @@
-
+ifeq($e,api)
+	$conf = $s-api
+else
+	$conf = $s
 mytarget: #make mytarget s=order e=api
-	@echo $s-$e
+	@go run ./app/$s/api/$s.go  -f ./app/$s/api/etc/$conf.yaml
 
 run:
-	@go run ./app/$s/api/$s.go  -f ./app/$s/api/etc/$s-api.yaml
+	@go run ./app/$s/api/$s.go  -f ./app/$s/api/etc/$conf.yaml
 
 run-user-api: # 启动 user-api 服务
 	@go run ./app/user/api/user.go  -f ./app/user/api/etc/user-api.yaml
