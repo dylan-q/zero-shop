@@ -1,12 +1,14 @@
-ifeq($e,api)
-	$conf = $s-api
+ifeq ($e,api)
+	CONF=$s-api
+	STR = @goctl api go -api ./app/$s/$e/$s.api -dir ./app/$s/$e --style=go_zero
 else
-	$conf = $s
-mytarget: #make mytarget s=order e=api
-	@go run ./app/$s/api/$s.go  -f ./app/$s/api/etc/$conf.yaml
-
-run:
-	@go run ./app/$s/api/$s.go  -f ./app/$s/api/etc/$conf.yaml
+	CONF=$s
+	STR = @goctl rpc protoc ./app/$s/$e/$s.proto --go_out=./app/$s/$e/ --go-grpc_out=./app/$s/$e/ --zrpc_out=./app/$s/$e --style=go_zero
+endif
+run: # 启动order的api服务 make run s=order e=api   启动order的rpc服务  make run s=order e=rpc
+	@go run ./app/$s/$e/$s.go  -f ./app/$s/$e/etc/$(CONF).yaml
+ctl:
+	$(STR)
 
 run-user-api: # 启动 user-api 服务
 	@go run ./app/user/api/user.go  -f ./app/user/api/etc/user-api.yaml
