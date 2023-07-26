@@ -1,0 +1,19 @@
+Name: pay-api
+Host: 0.0.0.0
+Port: 8004
+MicroService:
+  Driver: 'dtm-driver-gozero' # 配置dtm使用go-zero的微服务协议
+  Target: 'etcd://localhost:2379/dtmservice' # 把dtm注册到etcd的这个地址
+  EndPoint: 'localhost:36790' # dtm的本地地址
+
+PayRpcConf:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: pay.rpc
+
+OrderRpcConf:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: order.rpc

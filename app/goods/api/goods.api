@@ -9,7 +9,7 @@ info(
 )
 type ListReq {
 	Page     int64 `form:"page"`
-	PageSize int64 `form:"pageSize"`
+	PageSize int64 `form:"page_size"`
 }
 type DetailReq {
 	Id int64 `form:"id"`

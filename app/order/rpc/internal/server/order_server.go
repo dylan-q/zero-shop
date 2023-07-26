@@ -36,3 +36,8 @@ func (s *OrderServer) Detail(ctx context.Context, in *pb.DetailReq) (*pb.OrderIn
 	l := logic.NewDetailLogic(ctx, s.svcCtx)
 	return l.Detail(in)
 }
+
+func (s *OrderServer) UpdateOrderStatus(ctx context.Context, in *pb.UpdateOrderStatusReq) (*pb.UpdateOrderStatusResp, error) {
+	l := logic.NewUpdateOrderStatusLogic(ctx, s.svcCtx)
+	return l.UpdateOrderStatus(in)
+}

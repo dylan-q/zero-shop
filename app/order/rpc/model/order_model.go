@@ -4,6 +4,7 @@ import (
 	"context"
 	sq "github.com/Masterminds/squirrel"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
+	"zero-shop/app/order/rpc/pb"
 )
 
 var _ OrderModel = (*customOrderModel)(nil)
@@ -15,6 +16,7 @@ type (
 		orderModel
 		FindCount(ctx context.Context) (int64, error)
 		FindPageListByPage(ctx context.Context, page, pageSize int64) ([]*Order, error)
+		UpdateOrderStatus(ctx context.Context, req *pb.UpdateOrderStatusReq) error
 	}
 
 	customOrderModel struct {
@@ -55,4 +57,13 @@ func (m *defaultOrderModel) FindCount(ctx context.Context) (int64, error) {
 	default:
 		return 0, err
 	}
+}
+func (m *defaultOrderModel) UpdateOrderStatus(ctx context.Context, req *pb.UpdateOrderStatusReq) error {
+	sql, i, err := sq.Update(m.table).Where("id", req.OrderId).Set("order_status", req.OrderStatus).ToSql()
+	if err != nil {
+		return err
+	}
+	//query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, orderRowsWithPlaceHolder)
+	_, err = m.conn.ExecCtx(ctx, sql, i)
+	return err
 }

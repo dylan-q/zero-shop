@@ -10,6 +10,7 @@ message CreateOrderReq {
   double MarketPrice = 3;
   double SalePrice = 4;
   int64 OrderStatus = 5;
+  string OrderSn = 6;
 }
 
 message CreateOrderResp {
@@ -59,9 +60,17 @@ message ListResp{
 message DetailReq{
   int64 Id = 1;
 }
+message UpdateOrderStatusReq{
+  int64 OrderId = 1;
+  int64 OrderStatus = 2;
+}
+message UpdateOrderStatusResp{
+  int64 OrderId = 1;
+}
 
 service order {
   rpc Create(CreateOrderReq) returns (CreateOrderResp);
   rpc List(ListReq)returns(ListResp);
   rpc Detail(DetailReq)returns(OrderInfoResp);
+  rpc UpdateOrderStatus(UpdateOrderStatusReq) returns(UpdateOrderStatusResp);
 }

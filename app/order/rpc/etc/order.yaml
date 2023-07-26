@@ -11,3 +11,7 @@ GoodsRpcConf:
   Endpoints:
     - 127.0.0.1:8001
   NonBlock: true
+PayRpcConf:
+  Endpoints:
+    - 127.0.0.1:8003
+  NonBlock: true

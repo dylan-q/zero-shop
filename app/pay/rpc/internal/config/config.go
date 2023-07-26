@@ -7,6 +7,4 @@ type Config struct {
 	DB struct {
 		DataSource string
 	}
-	GoodsRpcConf zrpc.RpcClientConf
-	PayRpcConf   zrpc.RpcClientConf
 }

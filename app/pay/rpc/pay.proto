@@ -27,8 +27,29 @@ message ThirdResp{
   string TradeStateDesc = 11;
   string OrderSn = 12;
 }
+message GetThirdByOrderSnReq{
+  string OrderSn = 1;
+}
+message UpdateByOrderSnReq{
+  string Sn = 1; // 订单流水号
+  int64 UpdateTime = 2 ;
+  int64 PayMode = 3; // 1 微信支付 2 支付宝支付
+  string TradeType = 4;// 支付类型
+  string TradeState = 5;// 交易状态
+  double PayTotal = 6;// 支付金额
+  string TransactionId = 7;// 微信的订单号
+  string TradeStateDesc = 8;// 订单支付描述
+  string OrderSn = 9;// 订单sn
+  int64 PayStatus = 10;// -1:支付失败 0:未支付 1:支付成功 2:已退款
+  int64 PayTime = 11;// 支付时间
+}
+message UpdateByOrderSnResp{
+  int64 Id = 1;
+}
 
 service pay {
   rpc Create(PayReq) returns (PayResp);
   rpc Third(ThirdReq) returns (ThirdResp);
+  rpc GetThirdByOrderSn(GetThirdByOrderSnReq) returns (ThirdResp);
+  rpc UpdateByOrderSn(UpdateByOrderSnReq)returns(UpdateByOrderSnResp);
 }
