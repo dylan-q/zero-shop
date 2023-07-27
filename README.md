@@ -13,3 +13,5 @@ https://github.com/zeromicro/go-zero
 - 新建 proto 文件，根据proto文件生成`rpc`服务
 - 新建业务 api 文件，根据 api 文件生成`api`服务
 - 修改配置，让api 服务连接 rpc 服务
+>git clone https://github.com/dtm-labs/dtm && cd dtm
+go run main.go 

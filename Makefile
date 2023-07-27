@@ -12,3 +12,4 @@ ctl: #生成根据api和proto文件生成对应的服务 make ctl s=order e=api 
 #make ctl-model m=abc abc 是表名
 ctl-model:
 	@goctl model mysql datasource -url="root:root@tcp(127.0.0.1:3306)/zero-shop" -table="$m"  -dir="./genModel"  --style=go_zero
+
