@@ -44,6 +44,7 @@ type GoodsInfo {
 @server(
 	// 打印日志
 	middleware: LogMiddleware
+	prefix: /v1
 )
 service goods-api {
 	@doc "商品列表"
