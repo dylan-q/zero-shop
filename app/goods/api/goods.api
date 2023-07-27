@@ -41,6 +41,10 @@ type GoodsInfo {
 	CreateTime  int64    `json:"create_time"`
 	UpdateTime  int64    `json:"update_time"`
 }
+@server(
+	// 打印日志
+	middleware: LogMiddleware
+)
 service goods-api {
 	@doc "商品列表"
 	@handler list

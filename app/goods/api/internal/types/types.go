@@ -3,7 +3,7 @@ package types
 
 type ListReq struct {
 	Page     int64 `form:"page"`
-	PageSize int64 `form:"pageSize"`
+	PageSize int64 `form:"page_size"`
 }
 
 type DetailReq struct {
