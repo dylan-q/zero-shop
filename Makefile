@@ -1,6 +1,6 @@
 ifeq ($e,api)
 	CONF=$s-api
-	STR = @goctl api go -api ./app/$s/$e/$s.api -dir ./app/$s/$e --style=go_zero
+	STR = @goctl api go -api ./app/$s/$e/$s.api -dir ./app/$s/$e --style=go_zero --home=./tpl
 else
 	CONF=$s
 	STR = @goctl rpc protoc ./app/$s/$e/$s.proto --go_out=./app/$s/$e/ --go-grpc_out=./app/$s/$e/ --zrpc_out=./app/$s/$e --style=go_zero
